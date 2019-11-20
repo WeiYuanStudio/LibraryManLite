@@ -1,0 +1,25 @@
+/* body {
+    flex
+} */
+
+.main-page {
+    width: 960px;
+    margin: auto;
+    margin-top: 15%;
+    text-align: center;
+}
+
+#logo-l {
+    margin: auto;
+    font-size: 72px;
+    font-weight: 900;
+    user-select: none;
+}
+
+#search-input {
+    font-size: large;
+    padding: 4px 16px;
+    border-radius: 10px;
+    border: solid 2px gray;
+    width: 80%;
+}

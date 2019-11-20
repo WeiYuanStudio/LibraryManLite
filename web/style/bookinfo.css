@@ -1,0 +1,60 @@
+.main-page {
+    width: 960px;
+    margin: auto;
+    margin-top: 0px;
+    text-align: center;
+}
+
+#logo-l {
+    margin: auto;
+    font-size: 72px;
+    font-weight: 900;
+    user-select: none;
+}
+
+#search-input {
+    font-size: large;
+    padding: 4px 16px;
+    border-radius: 10px;
+    border: solid 2px gray;
+    width: 60%;
+}
+
+.books-panel {
+    margin: 20px 20px;
+    text-align: center;
+}
+
+.book-info {
+    width: auto;
+    border-bottom: solid 2px gray;
+    padding: 20px;
+    margin: 0px 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.book-info:hover {
+    background-color: #DDDDDD;
+}
+
+.book-cover {
+    width: auto;
+	height: auto;
+    max-width: 150px;
+    margin: 10px 20px;
+}
+
+.book-misc {
+    text-align: left;
+    margin: 10px 20px;
+}
+
+.book-title {
+    font-weight: 1000;
+    font-size: 1.6em;
+}
+
+.book-intro {
+    margin: 20px;
+}
