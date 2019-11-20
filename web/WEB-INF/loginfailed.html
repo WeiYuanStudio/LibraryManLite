@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style/login.css">
+        <script>
+            window.onload = setTimeout(function () {
+                window.location.href="./login";
+            }, 1000)
+        </script>
     </head>
     <body>
         <div class="main-page">
@@ -12,15 +17,8 @@
             </div>
             <form id="login-panel" method="POST">
                 <table>
-                    <span style="color: red;">Login failed</span>
-                    <tr>
-                        <td>User Name:</td><td><input class type="text" name="username"></td>
-                    </tr>
-                    <tr>
-                        <td>Password:</td><td><input type="password" name="password"></td>
-                    </tr>
+                    <span style="color: red;">Login failed<hr>After 1s jump to <a href="./login">User Login Page</span>
                 </table>
-                <input type="submit" value="Login">
             </form>
         </div>
     </body>

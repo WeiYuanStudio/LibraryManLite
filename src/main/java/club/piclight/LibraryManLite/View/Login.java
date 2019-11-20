@@ -23,7 +23,7 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String username = req.getParameter("username"); //取请求参数用户名
         String password = req.getParameter("password"); //取请求参数密码
-        if (username != null || password != null) {
+        if (!username.equals("") || !password.equals("")) {
             User loginUser = UserDAO.login(username, password); //数据库请求登录
             if (loginUser != null) { //如果登录成功
                 req.getSession().setAttribute("user", loginUser); //设置Session

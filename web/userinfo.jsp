@@ -15,6 +15,10 @@
     </div>
     <%
         User user = (User) request.getSession().getAttribute("user");
+        if(user == null) {
+            RequestDispatcher dispatcher = request.getRequestDispatcher("./WEB-INF/loginfailed.html");
+            dispatcher.forward(request, response);
+        }
     %>
     <div id="userinfo-panel">
         <table>
