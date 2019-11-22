@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.piclight.LibraryManLite.Model">
+    <select id="listBooks" resultType="Book">
+        select * from book
+    </select>
+    <insert id="addBook" parameterType="Book">
+        insert into book value (#{isbn}, #{title}, #{publisher}, #{author}, #{publishDate}, #{coverImg}, #{intro})
+    </insert>
+    <select id="getBooksByTitle" parameterType="String" resultType="Book">
+        SELECT * FROM book WHERE title LIKE CONCAT('%', #{title}, '%')
+    </select>
+</mapper>

@@ -1,6 +1,6 @@
 <%@ page import="club.piclight.LibraryManLite.DAO.BookDAO" %>
-<%@ page import="java.util.ArrayList" %>
 <%@ page import="club.piclight.LibraryManLite.Model.Book" %>
+<%@ page import="java.util.List" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
@@ -24,8 +24,8 @@
     <div class="books-panel">
         <%
             String queryBookName = request.getParameter("book_name");
-            ArrayList<Book> books = BookDAO.getBooksByName(queryBookName);
-            if (books == null) {
+            List<Book> books = BookDAO.getBooksByName(queryBookName);
+            if (books.isEmpty()) {
         %>
                 <h1 style="margin-top: 20%">No such book</h1>
         <%
