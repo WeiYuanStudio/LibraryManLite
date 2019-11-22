@@ -4,8 +4,9 @@
     <select id="listUser" resultType="User">
         select * from user
     </select>
-    <insert id="addUser" parameterType="User">
-        insert into user value (#{uid}, #{username}, #{gender}, #{mail}, #{password})
+<!--Todo: 检查这里的uid，设置为AutoIncrease-->
+    <insert id="registerUser" parameterType="User">
+        insert into user(username, gender, mail, password) value (#{username}, #{gender}, #{mail}, #{password})
     </insert>
     <select id="getUserByName" parameterType="String" resultType="User">
         SELECT * FROM user WHERE username = #{username}
