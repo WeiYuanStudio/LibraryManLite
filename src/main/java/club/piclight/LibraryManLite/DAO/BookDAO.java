@@ -12,25 +12,16 @@ import java.util.List;
 
 public class BookDAO {
     public static List<Book> getBooksByName(String bookName) throws IOException {
-        String resource = "./mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
+        SqlSession session = LMSessionFactory.getSession();
         List<Book> books = session.selectList("getBooksByTitle", bookName);
+        session.close();
         return books;
     }
 
-    public static Book getBookByISBN(String isbn) {
-        if (isbn.equals("9780321714114")) {
-            Book tmpBook = new Book("9780321714114",
-                    "C++ Primer (5th Edition)",
-                    "Addison-Wesley Professional",
-                    "Stanley B.",
-                    "2012",
-                    "https://s1.ax1x.com/2019/11/19/MRSjh9.jpg",
-                    "C++ Primer Book");
-            return tmpBook;
-        } else
-            return null;
+    public static Book getBookByISBN(String isbn) throws IOException {
+        SqlSession session = LMSessionFactory.getSession();
+        List<Book> books = session.selectList("getBookByISBN", isbn);
+        session.close();
+        return books.get(0); //Todo:MyBatis查询结果不要返回List
     }
 }

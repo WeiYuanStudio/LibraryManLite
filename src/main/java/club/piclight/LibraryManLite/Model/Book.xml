@@ -10,4 +10,8 @@
     <select id="getBooksByTitle" parameterType="String" resultType="Book">
         SELECT * FROM book WHERE title LIKE CONCAT('%', #{title}, '%')
     </select>
+<!--Todo: Check this -->
+    <select id="getBookByISBN" parameterType="String" resultType="Book">
+        SELECT * FROM book WHERE isbn = #{isbn}
+    </select>
 </mapper>
