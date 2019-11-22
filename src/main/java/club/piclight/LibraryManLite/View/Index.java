@@ -13,7 +13,7 @@ public class Index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getParameter("book_name") == null) {
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.html");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/index.jsp");
             dispatcher.forward(req, resp);
         } else {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/books.jsp");

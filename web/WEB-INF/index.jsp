@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
     <head>
@@ -5,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style/index.css">
     </head>
+    <jsp:include page="header.jsp" />
     <body>
         <div class="main-page">
             <div id="logo-l">

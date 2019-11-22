@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./style/books.css">
 </head>
 <body>
-<%@include file="header.jsp" %>
+<jsp:include page="header.jsp" />
 <div class="main-page">
     <div id="logo-l" onclick="window.location.href='./index'">
         Library Man
