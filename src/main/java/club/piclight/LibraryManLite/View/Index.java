@@ -19,6 +19,5 @@ public class Index extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/books.jsp");
             dispatcher.forward(req, resp);
         }
-        super.doGet(req, resp);
     }
 }
