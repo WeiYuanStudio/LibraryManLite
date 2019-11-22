@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./register.css">
+    </head>
+    <body>
+        <div class="main-page">
+            <div id="logo-l">
+                Library Man
+            </div>
+            <form id="register-book-panel" method="POST">
+                <table>
+                    <caption>Register User</caption>
+                    <tr>
+                        <td>User Name</td><td><input class type="text" name="username"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>
+                            <select name="gender">
+                                <option value="">Choise gender</option>
+                                <option value="m">Male</option>
+                                <option value="f">Female</option>
+                            </select>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td><td><input type="email" name="email"></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td><td><input type="password" name="password"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>

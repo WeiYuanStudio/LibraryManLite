@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./register.css">
+    </head>
+    <body>
+        <div class="main-page">
+            <div id="logo-l">
+                Library Man
+            </div>
+            <form id="register-book-panel" method="POST">
+                <table>
+                    <caption>Register Book</caption>
+                    <tr>
+                        <td>ISBN</td><td><input class type="text" name="isbn"></td>
+                    </tr>
+                    <tr>
+                        <td>Title</td><td><input type="text" name="title"></td>
+                    </tr>
+                    <tr>
+                        <td>Publisher</td><td><input type="text" name="publisher"></td>
+                    </tr>
+                    <tr>
+                        <td>Author</td><td><input type="text" name="author"></td>
+                    </tr>
+                    <tr>
+                        <td>Publish Date</td><td><input type="date" name="publish_date"></td>
+                    </tr>
+                    <tr>
+                        <td>Cover IMG</td><td><input type="url" name="cover_img"></td>
+                    </tr>
+                    <tr>
+                        <td>Intro</td><td><input type="text" name="intro"></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
