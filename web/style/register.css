@@ -1,0 +1,43 @@
+.main-page {
+    width: 960px;
+    margin: auto;
+    margin-top: 5%;
+    text-align: center;
+}
+
+#logo-l {
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 72px;
+    font-weight: 900;
+    user-select: none;
+}
+
+#register-book-panel {
+    width: 300px;
+    padding: 15px 20px;
+    border-radius: 8px;
+    border: solid 2px black;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#register-book-panel caption {
+    font-size: 2em;
+    user-select: none;
+    margin: 5px;
+}
+
+#register-book-panel td {
+    text-align: left;
+    user-select: none;
+}
+
+#register-book-panel input, select {
+    padding: 4px;
+    border-radius: 4px;
+    border: solid 2px gray;
+    margin: 4px;
+}
