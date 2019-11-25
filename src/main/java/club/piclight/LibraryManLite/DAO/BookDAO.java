@@ -20,8 +20,12 @@ public class BookDAO {
 
     public static Book getBookByISBN(String isbn) throws IOException {
         SqlSession session = LMSessionFactory.getSession();
-        List<Book> books = session.selectList("getBookByISBN", isbn);
-        session.close();
-        return books.get(0); //Todo:MyBatis查询结果不要返回List
+        try {
+            List<Book> books = session.selectList("getBookByISBN", isbn);
+            session.close();
+            return books.get(0); //Todo:MyBatis查询结果不要返回List
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
