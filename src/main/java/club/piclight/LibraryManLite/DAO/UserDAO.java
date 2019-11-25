@@ -12,15 +12,15 @@ import java.util.List;
 
 public class UserDAO {
     public static User login(String username, String password) throws IOException {
-        String resource = "./mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
-        SqlSession session = sqlSessionFactory.openSession();
-        List<User> userList = session.selectList("getUserByName", username);
-        User user = userList.get(0); //获取查询到的第一个用户
-        if (password.equals(userList.get(0).getPassword())) {
-            return userList.get(0);
+        try {
+            SqlSession session = LMSessionFactory.getSession();
+            List<User> userList = session.selectList("getUserByName", username);
+            if (password.equals(userList.get(0).getPassword())) { //比对第一个匹配用户名的用户的密码
+                return userList.get(0);
+            } else
+                return null;
+        } catch (Exception e) {
+            return null;
         }
-        return null;
     }
 }

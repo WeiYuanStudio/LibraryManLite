@@ -12,7 +12,7 @@ import java.io.IOException;
 public class Logout extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getSession().setAttribute("user", null);
+        req.getSession().invalidate();
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/logoutsuccess.html");
         dispatcher.forward(req, resp);
     }
