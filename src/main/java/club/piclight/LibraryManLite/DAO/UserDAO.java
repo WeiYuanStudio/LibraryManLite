@@ -1,13 +1,9 @@
 package club.piclight.LibraryManLite.DAO;
 
 import club.piclight.LibraryManLite.Model.User;
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 public class UserDAO {
@@ -22,5 +18,18 @@ public class UserDAO {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public static void Register(String userName, char gender, String email, String password) throws IOException {
+        User user = new User(-1, //实例化表单提交数据
+                userName,
+                gender,
+                email,
+                password);
+
+        SqlSession session = LMSessionFactory.getSession(); //获取SqlSession
+        session.insert("registerUser", user); //执行Sql语句
+        session.commit(); //提交
+        session.close(); //关闭Session
     }
 }
