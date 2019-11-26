@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="main-page">
-    <div id="logo-l">
+    <div id="logo-l"  onclick="window.location.href='./index'">
         Library Man
     </div>
     <%
