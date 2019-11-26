@@ -1,11 +1,7 @@
 package club.piclight.LibraryManLite.View;
 
-import club.piclight.LibraryManLite.DAO.LMSessionFactory;
-import club.piclight.LibraryManLite.Model.RealBook;
-import club.piclight.LibraryManLite.Model.Record;
+import club.piclight.LibraryManLite.DAO.BookDAO;
 import club.piclight.LibraryManLite.Model.User;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -33,21 +29,8 @@ public class ManageBook extends HttpServlet {
                 String isbn = req.getParameter("isbn");
                 int adminUID = ((User) req.getSession().getAttribute("user")).getUid();
 
-                SqlSession session = LMSessionFactory.getSession();
-
-                RealBook realBook = new RealBook(bookSN, isbn);
-                Record record = new Record(-1,
-                        -1,
-                        adminUID,
-                        bookSN,
-                        3,
-                        null
-                );
-
-                session.insert("addRealBook", realBook);
-                session.insert("purchaseBook", record);
-                session.commit();
-                session.close();
+                BookDAO.registerRealBook(bookSN, isbn);
+                BookDAO.registerBookRecord(adminUID, bookSN);
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/successpage.html");
                 dispatcher.forward(req, resp);
                 break;
