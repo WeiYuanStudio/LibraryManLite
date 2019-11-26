@@ -1,22 +1,22 @@
 package club.piclight.LibraryManLite.Model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 public class Record {
     private int recordID;
-    private String customerUID;
-    private String adminUID;
+    private int customerUID;
+    private int adminUID;
     private String bookSN;
-    private int oprateID;
-    private Date oprateDate;
+    private int operateID;
+    private Timestamp operateDate;
 
-    public Record(int recordID, String customerUID, String adminUID, String bookSN, int oprateID, Date oprateDate) {
+    public Record(int recordID, int customerUID, int adminUID, String bookSN, int oprateID, Timestamp oprateDate) {
         this.recordID = recordID;
         this.customerUID = customerUID;
         this.adminUID = adminUID;
         this.bookSN = bookSN;
-        this.oprateID = oprateID;
-        this.oprateDate = oprateDate;
+        this.operateID = oprateID;
+        this.operateDate = oprateDate;
     }
 
     public int getRecordID() {
@@ -27,19 +27,19 @@ public class Record {
         this.recordID = recordID;
     }
 
-    public String getCustomerUID() {
+    public int getCustomerUID() {
         return customerUID;
     }
 
-    public void setCustomerUID(String customerUID) {
+    public void setCustomerUID(int customerUID) {
         this.customerUID = customerUID;
     }
 
-    public String getAdminUID() {
+    public int getAdminUID() {
         return adminUID;
     }
 
-    public void setAdminUID(String adminUID) {
+    public void setAdminUID(int adminUID) {
         this.adminUID = adminUID;
     }
 
@@ -51,19 +51,19 @@ public class Record {
         this.bookSN = bookSN;
     }
 
-    public int getOprateID() {
-        return oprateID;
+    public int getOperateID() {
+        return operateID;
     }
 
-    public void setOprateID(int oprateID) {
-        this.oprateID = oprateID;
+    public void setOperateID(int operateID) {
+        this.operateID = operateID;
     }
 
-    public Date getOprateDate() {
-        return oprateDate;
+    public Timestamp getOperateDate() {
+        return operateDate;
     }
 
-    public void setOprateDate(Date oprateDate) {
-        this.oprateDate = oprateDate;
+    public void setOperateDate(Timestamp operateDate) {
+        this.operateDate = operateDate;
     }
 }
