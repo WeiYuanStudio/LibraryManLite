@@ -1,6 +1,8 @@
 package club.piclight.LibraryManLite.View;
 
 import club.piclight.LibraryManLite.DAO.BookDAO;
+import club.piclight.LibraryManLite.DAO.RecordDAO;
+import club.piclight.LibraryManLite.Model.Record;
 import club.piclight.LibraryManLite.Model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -21,23 +23,33 @@ public class ManageBook extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String action = req.getParameter("action");
-        switch (action) {
-            case "storage":
-                //获取参数信息
-                String bookSN = req.getParameter("book_sn");
-                String isbn = req.getParameter("isbn");
-                int adminUID = ((User) req.getSession().getAttribute("user")).getUid();
+        try {
+            //获取参数信息
+            String action = req.getParameter("action");
 
-                BookDAO.registerRealBook(bookSN, isbn);
-                BookDAO.registerBookRecord(adminUID, bookSN);
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/successpage.html");
-                dispatcher.forward(req, resp);
-                break;
-            case "borrow":
-                break;
-            case "return":
-                break;
+            String bookSN = req.getParameter("book_sn");
+            String isbn = req.getParameter("isbn");
+            String uidStr = req.getParameter("uid"); //这里parse可能会导致Exception，因为表单提交不完整
+            int adminUID = ((User) req.getSession().getAttribute("user")).getUid();
+
+            switch (action) {
+                case "storage":
+                    BookDAO.registerRealBook(bookSN, isbn);
+                    BookDAO.registerBookRecord(adminUID, bookSN);
+                    break;
+
+                case "borrow":
+                    RecordDAO.borrowBookRecord(Integer.parseInt(uidStr), adminUID, bookSN);
+                    break;
+
+                case "return":
+                    break;
+            }
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/successpage.html");
+            dispatcher.forward(req, resp);
+        } catch (Exception e) {
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/errorpage.html");
+            dispatcher.forward(req, resp);
         }
     }
 }
