@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.piclight.LibraryManLite.Model">
+    <select id="listRealBooks" resultType="RealBook">
+        SELECT * FROM real_book
+    </select>
+    <select id="listRealBooksByISBN" parameterType="String" resultType="RealBook">
+        SELECT * FROM real_book WHERE isbn = #{isbn}
+    </select>
+    <insert id="addRealBook" parameterType="RealBook">
+        INSERT INTO real_book VALUE (#{bookSN}, #{isbn})
+    </insert>
+</mapper>

@@ -1,5 +1,10 @@
 <%@ page import="club.piclight.LibraryManLite.Model.Book" %>
-<%@ page import="club.piclight.LibraryManLite.DAO.BookDAO" %><%--
+<%@ page import="club.piclight.LibraryManLite.DAO.BookDAO" %>
+<%@ page import="org.apache.ibatis.session.SqlSession" %>
+<%@ page import="club.piclight.LibraryManLite.DAO.LMSessionFactory" %>
+<%@ page import="club.piclight.LibraryManLite.Model.RealBook" %>
+<%@ page import="java.util.List" %>
+<%@ page import="club.piclight.LibraryManLite.DAO.RealBookDAO" %><%--
   Created by IntelliJ IDEA.
   User: Adam
   Date: 11/20/2019
@@ -39,6 +44,23 @@
         <div class="book-intro">
             <%= book.getIntro() %>
         </div>
+    </div>
+    <%
+            List<RealBook> realBooks = RealBookDAO.getRealBooksByISBN(queryISBN);
+    %>
+    <div>
+        <table>
+    <%
+            for (RealBook realBook : realBooks) {
+    %>
+            <tr>
+                <td>BookSN:</td>
+                <td><%= realBook.getBookSN() %></td>
+            </tr>
+    <%
+            }
+    %>
+        </table>
     </div>
     <%
         }

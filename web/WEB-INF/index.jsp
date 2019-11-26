@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./style/index.css">
     </head>
-    <jsp:include page="header.jsp" />
     <body>
+        <jsp:include page="header.jsp" />
         <div class="main-page">
             <div id="logo-l">
                 Library Man

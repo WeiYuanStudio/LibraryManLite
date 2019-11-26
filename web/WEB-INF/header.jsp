@@ -35,7 +35,7 @@
         if (user == null) {
     %>
     <span>Not logged in</span>
-    <a href="./registe">Sign in</a>
+    <a href="./signup">Sign in</a>
     <a href="./login">Log in</a>
     <%
     } else {
