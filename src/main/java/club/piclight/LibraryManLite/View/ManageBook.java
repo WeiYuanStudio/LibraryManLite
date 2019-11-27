@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static club.piclight.LibraryManLite.DAO.RecordDAO.OPERATE_BORROW;
+import static club.piclight.LibraryManLite.DAO.RecordDAO.bookLastestOperate;
+
 @WebServlet(urlPatterns = "/managebook")
 public class ManageBook extends HttpServlet {
     @Override
@@ -45,6 +48,9 @@ public class ManageBook extends HttpServlet {
                     break;
 
                 case "return":
+                    if(OPERATE_BORROW != bookLastestOperate(bookSN))
+                        throw new RuntimeException("Book not returnable");
+                    RecordDAO.returnBookRecord(adminUID, bookSN);
                     break;
             }
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/successpage.html");

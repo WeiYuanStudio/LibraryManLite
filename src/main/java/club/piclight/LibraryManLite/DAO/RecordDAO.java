@@ -35,4 +35,25 @@ public class RecordDAO {
         int lastestOperate = recordList.get(0).getOperateID(); //获取最后一次记录的operateID
         return lastestOperate == OPERATE_RETURN || lastestOperate == OPERATE_PURCHASE;
     }
+
+    public static int bookLastestOperate(String bookSN) throws IOException {
+        SqlSession session = LMSessionFactory.getSession();
+        List<Record> recordList = session.selectList("getDescRecordByBookSN", bookSN);
+        int lastestOperate = recordList.get(0).getOperateID(); //获取最后一次记录的operateID
+        return lastestOperate;
+    }
+
+    public static void returnBookRecord(int adminUID, String bookSN) throws IOException {
+        SqlSession session = LMSessionFactory.getSession();
+        Record record = new Record(-1,
+                -1,
+                adminUID,
+                bookSN,
+                OPERATE_RETURN,
+                null
+                );
+        session.insert("returnBook", record);
+        session.commit();
+        session.close();
+    }
 }
