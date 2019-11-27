@@ -2,7 +2,6 @@ package club.piclight.LibraryManLite.View;
 
 import club.piclight.LibraryManLite.DAO.BookDAO;
 import club.piclight.LibraryManLite.DAO.RecordDAO;
-import club.piclight.LibraryManLite.Model.Record;
 import club.piclight.LibraryManLite.Model.User;
 
 import javax.servlet.RequestDispatcher;
@@ -39,6 +38,9 @@ public class ManageBook extends HttpServlet {
                     break;
 
                 case "borrow":
+                    if (!RecordDAO.bookBorrowable(bookSN)) { //如果不可借，抛错
+                        throw new RuntimeException("Book not borrowable");
+                    }
                     RecordDAO.borrowBookRecord(Integer.parseInt(uidStr), adminUID, bookSN);
                     break;
 

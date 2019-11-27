@@ -4,6 +4,7 @@ import club.piclight.LibraryManLite.Model.Record;
 import org.apache.ibatis.session.SqlSession;
 
 import java.io.IOException;
+import java.util.List;
 
 public class RecordDAO {
     public static final int OPERATE_BORROW = 1;
@@ -21,5 +22,17 @@ public class RecordDAO {
         session.insert("borrowBook", record);
         session.commit();
         session.close();
+    }
+
+    /**
+     * 判断该书是否可借
+     * @return
+     * @throws IOException
+     */
+    public static boolean bookBorrowable(String bookSN) throws IOException {
+        SqlSession session = LMSessionFactory.getSession();
+        List<Record> recordList = session.selectList("getDescRecordByBookSN", bookSN);
+        int lastestOperate = recordList.get(0).getOperateID(); //获取最后一次记录的operateID
+        return lastestOperate == OPERATE_RETURN || lastestOperate == OPERATE_PURCHASE;
     }
 }

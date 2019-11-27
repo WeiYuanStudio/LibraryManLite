@@ -7,4 +7,10 @@
     <insert id="borrowBook" parameterType="Record">
         INSERT INTO record(customer_uid, admin_uid, book_sn, operate_id) VALUES (#{customerUID}, #{adminUID}, #{bookSN}, 1)
     </insert>
+    <insert id="returnBook" parameterType="Record">
+        INSERT INTO record(admin_uid, book_sn, operate_id) VALUES (#{adminUID}, #{bookSN}, 2)
+    </insert>
+    <select id="getDescRecordByBookSN" parameterType="String" resultType="Record">
+        SELECT * FROM record WHERE book_sn = #{book_sn} ORDER BY ts DESC
+    </select>
 </mapper>
