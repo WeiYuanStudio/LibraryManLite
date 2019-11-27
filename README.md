@@ -51,10 +51,10 @@ record 表
 ```SQL
 CREATE TABLE record(
     record_id INTEGER PRIMARY KEY AUTO_INCREMENT,
-    customer_uid INTEGER,
-    admin_uid INTEGER,
-    book_sn VARCHAR(20),
-    operate_id INTEGER,
+    customer_uid INTEGER DEFAULT -1,
+    admin_uid INTEGER DEFAULT -1,
+    book_sn VARCHAR(20) NOT NULL,
+    operate_id INTEGER NOT NULL,
     ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
