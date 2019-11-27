@@ -1,16 +1,10 @@
 <%@ page import="club.piclight.LibraryManLite.Model.Book" %>
 <%@ page import="club.piclight.LibraryManLite.DAO.BookDAO" %>
-<%@ page import="org.apache.ibatis.session.SqlSession" %>
-<%@ page import="club.piclight.LibraryManLite.DAO.LMSessionFactory" %>
 <%@ page import="club.piclight.LibraryManLite.Model.RealBook" %>
 <%@ page import="java.util.List" %>
-<%@ page import="club.piclight.LibraryManLite.DAO.RealBookDAO" %><%--
-  Created by IntelliJ IDEA.
-  User: Adam
-  Date: 11/20/2019
-  Time: 1:10 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="club.piclight.LibraryManLite.DAO.RealBookDAO" %>
+<%@ page import="club.piclight.LibraryManLite.DAO.RecordDAO" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -46,7 +40,7 @@
         </div>
     </div>
     <%
-            List<RealBook> realBooks = RealBookDAO.getRealBooksByISBN(queryISBN);
+            List<RealBook> realBooks = RealBookDAO.getRealBooksByISBN(queryISBN); //Todo:检查是否有馆藏
     %>
     <div>
         <table>
@@ -54,8 +48,8 @@
             for (RealBook realBook : realBooks) {
     %>
             <tr>
-                <td>BookSN:</td>
                 <td><%= realBook.getBookSN() %></td>
+                <td><%= RecordDAO.bookBorrowable(realBook.getBookSN()) ? "Borrowable" : "Not borrowable" %></td>
             </tr>
     <%
             }
