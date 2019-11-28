@@ -34,13 +34,9 @@
     flex-direction: row;
 }
 
-.book-info:hover {
-    background-color: #DDDDDD;
-}
-
 .book-cover {
     width: auto;
-	height: auto;
+    height: auto;
     max-width: 150px;
     margin: 10px 20px;
 }
@@ -57,4 +53,8 @@
 
 .book-intro {
     margin: 20px;
+}
+
+table.real-book-table {
+    margin: auto;
 }

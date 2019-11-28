@@ -10,7 +10,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./style/books.css">
+    <link rel="stylesheet" href="./style/bookinfo.css">
 </head>
 <body>
 <jsp:include page="header.jsp" />
@@ -43,16 +43,18 @@
             List<RealBook> realBooks = RealBookDAO.getRealBooksByISBN(queryISBN); //Todo:检查是否有馆藏
     %>
     <div>
-        <table>
+        <table class="real-book-table">
     <%
-            for (RealBook realBook : realBooks) {
+            if (realBooks != null) {
+                for (RealBook realBook : realBooks) {
     %>
             <tr>
                 <td><%= realBook.getBookSN() %></td>
                 <td><%= RecordDAO.bookBorrowable(realBook.getBookSN()) ? "Borrowable" : "Not borrowable" %></td>
             </tr>
     <%
-            }
+                }
+        }
     %>
         </table>
     </div>
